@@ -73,16 +73,21 @@ The project is naturally divided into 4 phases, which we plan to complete in seq
 
 ### 9. Components
 
-•	IMU Sensors: To measure orientation and acceleration, providing data on the wearer's posture. \\
-•	ESP32 Modules: For wireless data transmission between the IMUs and the web server.\\
-•	Buzzer: For immediate feedback to the wearer when incorrect posture is detected.\\
-•	Webpage: To display real-time posture visualization and long-term posture analytics.\\
+•	IMU Sensors: To measure orientation and acceleration, providing data on the wearer's posture. 
+
+•	ESP32 Modules: For wireless data transmission between the IMUs and the web server.
+
+•	Buzzer: For immediate feedback to the wearer when incorrect posture is detected.
+
+•	Webpage: To display real-time posture visualization and long-term posture analytics.
 
 
 ### 10. Evaluation
 
 •	Accuracy of the IMU sensors: the sensors can precisely capture 3D posture of the body.
+
 •	User experience of webpage: the webpage or any other visual representation of body posture is intuitive to the user to understand
+
 •	Effectiveness of the feedback mechanism: the warning system against bad posture is effective for real use cases
 
 
