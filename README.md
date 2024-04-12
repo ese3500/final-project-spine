@@ -19,40 +19,34 @@ Poor body posture can lead to long-term health issues, including back pain, spin
 
 ### 3. Goals
 
-Our project aims to develop a lightweight, wearable system using multiple IMUs placed on a person's back to accurately monitor their posture in real-time. This data will be transmitted via an ESP32 module to a webpage that visually represents the user's current posture. If unhealthy posture is detected, the system will immediately alert the user through a buzzer. By the project's conclusion, we aim to achieve:
-•	Real-time posture monitoring with visual feedback on a webpage
-•	Instantaneous alert system for posture correction
-•	Data analysis for posture improvement over time
+Our project aims to develop a lightweight, wearable system using multiple IMUs placed on a person's back to accurately monitor their posture in real-time. This data will be transmitted via an ESP32 module to a webpage that visually represents the user's current posture. If unhealthy posture is detected, the system will immediately alert the user through a buzzer. By the project's conclusion, we aim to achieve:  
+•	Real-time posture monitoring with visual feedback on a webpage  
+•	Instantaneous alert system for posture correction  
+•	Data analysis for posture improvement over time  
 
 
 ### 4. Software Requirements Specification (SRS)
 
-Real-time Data Processing and Analysis: The system must be capable of processing data from multiple IMUs in real-time, analyzing posture, and determining if it deviates from predefined healthy parameters.
+1. Processing data from multiple IMUs and convert into real-time acceleration and pitch, yaw angles
+2. Reconstruct the relative position of wearer's spine
+3. Send software alert if certain dimension of the spine's position is beyond a preset threshold
+4. A reliable and secure wireless communication protocol between the IMUs/ESP32 modules and the server hosting the webpage.
 
-Webpage Interface: A user-friendly webpage interface that displays real-time posture data visually. This includes a 3D representation of the user's spine, posture scores, and historical posture data for trend analysis.
-
-Alert System: Software support for triggering physical feedback (buzzer) when unhealthy posture is detected. This includes defining thresholds for posture deviation that activate the alert.
-
-Wireless Communication: Implementation of a reliable and secure wireless communication protocol between the IMUs/ESP32 modules and the server hosting the webpage.
 
 ### 5. Hardware Requirements Specification (HRS)
 
-IMUs (Inertial Measurement Units): High precision IMUs capable of capturing accurate orientation and acceleration data, with a minimum sampling rate sufficient for real-time posture monitoring.
-
-ESP32 Modules: For wireless data transmission, the ESP32 modules should have reliable Wi-Fi capabilities and be able to handle multiple connections simultaneously.
-
-Buzzer: A compact, low-power buzzer capable of generating an audible alert when triggered by the software.
-
-Power Supply: Battery packs or power solutions that can sustain the operation of the IMUs, ESP32 modules, and buzzer for extended periods.
-
-Wearable Vest: A comfortable, adjustable vest designed to hold the IMUs in the correct positions along the user’s spine.
+1. IMUs (Inertial Measurement Units): IMUs with 6 degrees of freedom, with minimum sampling rate >100Hz.
+2. ESP32 Modules for wireless data transmission
+3. A 5V DC vibrater that produces a noticeable vibration when worn on body
+4. Power Supply: 5V and 3.3V battery packs or power solutions that can sustain the operation of the IMUs, ESP32 modules, and buzzer for extended periods.
+5. Wearable Vest: A comfortable, adjustable vest designed to hold the IMUs in the correct positions along the user’s spine.
 
 ### 6. MVP Demo
 
 We expect to demo the following functionalities for MVP:
 1. IMU data collection and transmission: the IMUs should accurately collect posture data and transmit them through Internet to the server
 2. Preliminary body pose reconstruction: the wearer's body pose should be reconstructed from the IMU data; this information can be printed on serial monitor or the webpage
-3. Preliminary bad body pose warning: if certain parameters of the body pose exceed predetermined thresholds, the system should prints out warnings on the serial monitor
+
 
 ### 7. Final Demo
 
