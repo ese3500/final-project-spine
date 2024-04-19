@@ -16,8 +16,8 @@ void checkPosture(double pitch1, double yaw1, double roll1, double pitch2, doubl
     double lowerBackAngle = pitch3;
 
     // Check if the neck angle is too flat compared to the other sensors
-    if (fabs(neckAngle - upperBackAngle) > NECK_ANGLE_THRESHOLD ||
-        fabs(neckAngle - lowerBackAngle) > NECK_ANGLE_THRESHOLD) {
+    if (fabs(neckAngle - upperBackAngle) > NECK_ANGLE_THRESHOLD) {
+        //||fabs(neckAngle - lowerBackAngle) > NECK_ANGLE_THRESHOLD excluded because dont think it wrks
         printf("Neck angle is too flat! Please adjust your posture.\n");
     }
 
