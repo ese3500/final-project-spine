@@ -9,6 +9,8 @@
 
 ## Final Project Proposal
 
+![ESE 3500 Final Project Block Diagram](https://github.com/ese3500/final-project-spine/assets/16732316/76a91e80-e5a7-4b1b-82af-96471e74eef5)
+
 ### 1. Abstract
 
 PostureGuard is a novel, wearable system designed to combat the prevalent issue of poor body posture, exacerbated by the modern lifestyle of prolonged sitting and screen time. Utilizing an array of IMUs placed on the user's back, the system accurately monitors spinal orientation and movement in real-time. Data transmitted via ESP32 chips to a webpage allows for immediate visual feedback on the user’s posture. If unhealthy posture is detected, the system promptly alerts the user through a buzzer, facilitating instant correction. This project combines hardware integration and web development to offer a non-intrusive, cost-effective solution for real-time posture monitoring and correction, aiming to contribute to long-term health improvements and increased awareness about posture.
