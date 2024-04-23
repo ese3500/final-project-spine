@@ -4,77 +4,55 @@ from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.animation as animation
 
 # Initialize the data points
-data_points = np.array([[0, 0, 0],
-                        [0, 0, 0],
-                        [0, 0, 0],
-                        [0, 0, 0]])
+data_points = np.array([[0, 0, 0],  # Neck
+                        [0, 0, -1],  # Upper back
+                        [0, 0, -2],  # Lower back
+                        [0, 0, -3]])  # Waist
 
 # Create the figure and subplots
 fig = plt.figure(figsize=(10, 5))
-ax_back = fig.add_subplot(121, projection='3d')
-ax_side = fig.add_subplot(122, projection='3d')
+ax = fig.add_subplot(111, projection='3d')
 
 # Set the limits and labels for the axes
-ax_back.set_xlim(-1, 1)
-ax_back.set_ylim(-1, 1)
-ax_back.set_zlim(-1, 1)
-ax_back.set_xlabel('X')
-ax_back.set_ylabel('Y')
-ax_back.set_zlabel('Z')
-ax_back.set_title('Back View')
+ax.set_xlim(-2, 2)
+ax.set_ylim(-2, 2)
+ax.set_zlim(-4, 1)
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+ax.set_title('Stick Figure')
 
-ax_side.set_xlim(-1, 1)
-ax_side.set_ylim(-1, 1)
-ax_side.set_zlim(-1, 1)
-ax_side.set_xlabel('X')
-ax_side.set_ylabel('Y')
-ax_side.set_zlabel('Z')
-ax_side.set_title('Side View')
-
-# Initialize the lines and points for back view
-lines_back = []
-points_back = ax_back.scatter([], [], [], c='r', marker='o')
-
-# Initialize the lines and points for side view
-lines_side = []
-points_side = ax_side.scatter([], [], [], c='r', marker='o')
+# Initialize the lines and points
+lines = []
+points = ax.scatter([], [], [], c='r', marker='o')
 
 # Update function for animation
 def update(frame):
-    # Update the data points with new values (replace with your own data)
-    data_points[0] = [np.sin(frame), np.cos(frame), 0]
-    data_points[1] = [np.sin(frame + np.pi/4), np.cos(frame + np.pi/4), 0.5]
-    data_points[2] = [np.sin(frame + np.pi/2), np.cos(frame + np.pi/2), 1]
-    data_points[3] = [np.sin(frame + 3*np.pi/4), np.cos(frame + 3*np.pi/4), 1.5]
+    # Update the points
+    points._offsets3d = (data_points[:, 0], data_points[:, 1], data_points[:, 2])
 
-    # Update the points for back view
-    points_back._offsets3d = (data_points[:, 0], data_points[:, 1], data_points[:, 2])
-
-    # Update the lines for back view
-    for line in lines_back:
+    # Update the lines
+    for line in lines:
         line.remove()
-    lines_back.clear()
+    lines.clear()
 
-    for i in range(len(data_points) - 1):
-        line = ax_back.plot(data_points[i:i+2, 0], data_points[i:i+2, 1], data_points[i:i+2, 2], 'b-')[0]
-        lines_back.append(line)
+    # Connect the points to form the stick figure
+    lines.append(ax.plot(data_points[[0, 1], 0], data_points[[0, 1], 1], data_points[[0, 1], 2], 'b-')[0])  # Neck to upper back
+    lines.append(ax.plot(data_points[[1, 2], 0], data_points[[1, 2], 1], data_points[[1, 2], 2], 'b-')[0])  # Upper back to lower back
+    lines.append(ax.plot(data_points[[2, 3], 0], data_points[[2, 3], 1], data_points[[2, 3], 2], 'b-')[0])  # Lower back to waist
 
-    # Update the points for side view
-    points_side._offsets3d = (data_points[:, 0], data_points[:, 2], data_points[:, 1])
+    # Add arms
+    lines.append(ax.plot([data_points[1, 0], data_points[1, 0] - 0.5], [data_points[1, 1], data_points[1, 1] - 0.5], [data_points[1, 2], data_points[1, 2]], 'b-')[0])  # Left arm
+    lines.append(ax.plot([data_points[1, 0], data_points[1, 0] + 0.5], [data_points[1, 1], data_points[1, 1] + 0.5], [data_points[1, 2], data_points[1, 2]], 'b-')[0])  # Right arm
 
-    # Update the lines for side view
-    for line in lines_side:
-        line.remove()
-    lines_side.clear()
+    # Add legs
+    lines.append(ax.plot([data_points[3, 0], data_points[3, 0] - 0.25], [data_points[3, 1], data_points[3, 1] - 0.25], [data_points[3, 2], data_points[3, 2] - 1], 'b-')[0])  # Left leg
+    lines.append(ax.plot([data_points[3, 0], data_points[3, 0] + 0.25], [data_points[3, 1], data_points[3, 1] + 0.25], [data_points[3, 2], data_points[3, 2] - 1], 'b-')[0])  # Right leg
 
-    for i in range(len(data_points) - 1):
-        line = ax_side.plot(data_points[i:i+2, 0], data_points[i:i+2, 2], data_points[i:i+2, 1], 'b-')[0]
-        lines_side.append(line)
-
-    return points_back, points_side, *lines_back, *lines_side
+    return points, *lines
 
 # Create the animation
-ani = animation.FuncAnimation(fig, update, frames=np.linspace(0, 2*np.pi, 100), interval=50, blit=True)
+ani = animation.FuncAnimation(fig, update, frames=1, interval=50, blit=True)
 
 # Show the plot
 plt.tight_layout()
