@@ -23,14 +23,13 @@ Poor body posture can lead to long-term health issues, including back pain, spin
 
 Our project aims to develop a lightweight, wearable system using multiple IMUs placed on a person's back to accurately monitor their posture in real-time. This data will be transmitted via an ESP32 module to a webpage that visually represents the user's current posture. If unhealthy posture is detected, the system will immediately alert the user through a buzzer. By the project's conclusion, we aim to achieve:  
 •	Real-time posture monitoring with visual feedback on a webpage  
-•	Instantaneous alert system for posture correction  
-•	Data analysis for posture improvement over time  
+•	Instantaneous alert system for posture correction   
 
 
 ### 4. Software Requirements Specification (SRS)
 
-1. Processing data from multiple IMUs and convert into real-time acceleration and pitch, yaw angles
-2. Reconstruct the relative position of wearer's spine
+1. Processing data from multiple IMUs and convert into real-time acceleration and pitch, yaw angles, with accuracy of <2 degrees for the angles
+2. Reconstruct the relative position of wearer's spine and show an understandable visual representation to user
 3. Send software alert if certain dimension of the spine's position is beyond a preset threshold
 4. A reliable and secure wireless communication protocol between the IMUs/ESP32 modules and the server hosting the webpage.
 
@@ -80,7 +79,7 @@ The project is naturally divided into 4 phases, which we plan to complete in seq
 
 ### 10. Evaluation
 
-•	Accuracy of the IMU sensors: the sensors can precisely capture 3D posture of the body.
+•	Accuracy of the IMU sensors: the sensors can precisely capture 3D posture of the body as per SRS.
 
 •	User experience of webpage: the webpage or any other visual representation of body posture is intuitive to the user to understand
 
