@@ -5,9 +5,9 @@ import matplotlib.animation as animation
 
 # Initialize the data points
 data_points = np.array([[0, 0, 0],
-                        [0, 0, 0],
-                        [0, 0, 0],
-                        [0, 0, 0]])
+                        [0, 0, -1],
+                        [0, 0, -2],
+                        [0, 0, -3]])
 
 # Create the figure and subplots
 fig = plt.figure(figsize=(10, 5))
