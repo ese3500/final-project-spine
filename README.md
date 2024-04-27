@@ -1,10 +1,10 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/2TmiRqwI)
-# final-project-skeleton
+# final-project
 
     * Team Name: PostureGuard: Real-time Posture Monitoring and Correction System
     * Team Members: Tobby Zhu, Steven Walxim
     * Github Repository URL: https://github.com/ese3500/final-project-spine
-    * Github Pages Website URL: [for final submission]
+    * Github Pages Website URL: https://tobbychu.github.io/PostureGuard/
     * Description of hardware: Atmega328PB, ESP32 Feather, MPU6050, buzzer
 
 
