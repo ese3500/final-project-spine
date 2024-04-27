@@ -30,31 +30,29 @@ Our final solution closely follows our initial design. We connect 4 MPU 6050 IMU
 
 #### 3.1 Software Requirements Specification (SRS) Results
 
-1. Processing data from multiple IMUs and convert into real-time acceleration and pitch, yaw angles, with accuracy of <2 degrees for the angles
+1. Processing data from multiple IMUs and convert into real-time acceleration and pitch, yaw angles, with accuracy of <2 degrees for the angles  
    We meet this requirement. By our measurement, all angles are within 2 degrees with respect to our iPhone IMU readings. However, the Mahony algorithm we use leads to significant drifting of the readings after 30 seconds after reset.
    
-2. Reconstruct the relative position of wearer's spine and show an understandable visual representation to user
+2. Reconstruct the relative position of wearer's spine and show an understandable visual representation to user  
    We do not meet this requirement. Reconstruction of the spine based on angle data proved difficult. We were also unable to run Python script on Blynk.
    
-3. Send software alert if certain dimension of the spine's position is beyond a preset threshold
+3. Send software alert if certain dimension of the spine's position is beyond a preset threshold  
    We meet this requirement. We tested for "Neck angle too flat", "Hunch back", and "Pelvic tilt", which were accurately alerted for by our system.
    
-4. A reliable and secure wireless communication protocol between the IMUs/ESP32 modules and the server hosting the webpage.
+4. A reliable and secure wireless communication protocol between the IMUs/ESP32 modules and the server hosting the webpage  
    We meet this requirement. We tested continuously running our system for 30 minutes and our end-to-end connection, including hard-wired pins, I2C connection, UART connection, and WiFi connection remained stable.
 
 #### 3.2 Hardware Requirements Specification (HRS) Results
 
-1. IMUs (Inertial Measurement Units): IMUs with 6 degrees of freedom, with minimum sampling rate >100Hz.
+1. IMUs (Inertial Measurement Units): IMUs with 6 degrees of freedom, with minimum sampling rate >100Hz  
    We tested that all of our IMUs have sampling rates >10k Hz. We are using a 61Hz sampling rate in this project.
-2. ESP32 Modules for wireless data transmission
+2. ESP32 Modules for wireless data transmission   
    This requirement is trivially met.
-3. A 5V DC vibrater that produces a noticeable vibration when worn on body
-   We decided to replace the vibrater with an LED and an audible buzzer. The LED and buzzer work as desired.
-   
-4. Power Supply: 5V and 3.3V battery packs or power solutions that can sustain the operation of the IMUs, ESP32 modules, and buzzer for extended periods.
-   We opted for a 5V DC powerbank with USB-A and USB-C ports instead of battery packs. The powerbank is able to systain the operation of our system.
-   
-5. Wearable Vest: A comfortable, adjustable vest designed to hold the IMUs in the correct positions along the user’s spine.
+3. A 5V DC vibrater that produces a noticeable vibration when worn on body  
+   We decided to replace the vibrater with an LED and an audible buzzer. The LED and buzzer work as desired.  
+4. Power Supply: 5V and 3.3V battery packs or power solutions that can sustain the operation of the IMUs, ESP32 modules, and buzzer for extended periods.  
+   We opted for a 5V DC powerbank with USB-A and USB-C ports instead of battery packs. The powerbank is able to systain the operation of our system.  
+5. Wearable Vest: A comfortable, adjustable vest designed to hold the IMUs in the correct positions along the user’s spine.  
    We made a wooden movable spine in lieu of the vest. This is because our system is unstable when operating on real human bodies due to robustness issues of the Mohony algorithm.
 
 ### 4. Conclusion
@@ -74,6 +72,7 @@ We referenced a Mohony algorithm library by Davide Gironi. The code is mostly ba
 
 
 
+    
 ## Final Project Proposal
 
 ### 1. Abstract
